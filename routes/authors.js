@@ -11,8 +11,9 @@ router.get("/", async (req, res) => {
     }
         try {
             const authors = await Author.find(searchOptions); // the empty object means that there's no filters in the search
-            res.render('authors/index', { authors: authors, 
-                                          searchOptions: req.query
+            res.render('authors/index', {
+                authors: authors, 
+                searchOptions: req.query
              })   // renders the index JUST for the authors and sends the authors and searchOptions to that file
         } catch {
             res.redirect('/');
