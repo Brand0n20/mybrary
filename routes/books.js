@@ -20,6 +20,14 @@ router.get("/", async (req, res) => {
     if (req.query.title != null && req.query.title != '') {
         query = query.regex('title', new RegExp(req.query.title, 'i'))
     }
+    // checking if the publishDate of any books is less than the date of the publishedBefore and then will return that date
+    if (req.query.publishedBefore != null && req.query.publishedBefore != '') {
+        query = query.lte('publishDate', req.query.publishedBefore);    // 'lte' means less than or equal to
+    }
+    // checking if the publishDate of any books is greater than the date of the publishedAfter value entered in the search
+    if (req.query.publishedAfter != null && req.query.publishedAfter != '') {
+        query = query.gte('publishDate', req.query.publishedAfter);    // 'gte' means greater than or equal to
+    }
     try {
         const books = await query.exec();  // the 'await' key is very important
         res.render('books/index', {
@@ -51,6 +59,7 @@ router.post('/', upload.single('cover'), async (req, res) => {
 
     try {
         const newBook = await book.save();
+        console.log(book.publishDate)
         res.redirect('books')
     } catch(err) {
         if (book.coverImageName != null) {
