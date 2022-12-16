@@ -14,9 +14,9 @@ const bookRouter = require('./routes/books')
 
 app.set('view engine', 'ejs'); //setting our view engine
 app.set('views', __dirname + '/views');
-app.set('layout', 'layouts/layout');
-app.use(expressLayouts);
-app.use(express.static('public'));
+app.set('layout', 'layouts/layout');    //every single file will be put in side this layout file so we don't duplicate beginning ending HTML
+app.use(expressLayouts); 
+app.use(express.static('public'));  //folder for uploads and style sheets
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 app.use(methodOverride('_method'));
 

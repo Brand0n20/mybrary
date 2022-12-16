@@ -88,6 +88,7 @@ router.put('/:id', async (req, res) => {
 // Delete Router
 router.delete('/:id', async (req, res) => {
     let author;
+    let errorMessage;
     try {
         author = await Author.findById(req.params.id);
         await author.remove();  // will delete the author from the database
@@ -96,7 +97,13 @@ router.delete('/:id', async (req, res) => {
         if (author == null) {
             res.redirect('/');
         } else {
-            res.redirect(`/authors/${author.id}`);
+            let searchOptions = {};
+            const authors = await Author.find(searchOptions); // the empty object means that there's no filters in the search
+            res.render('authors/index', {
+                authors: authors, 
+                searchOptions: req.query,
+                errorMessage: `${author.name} has a book in the database so it can't be deleted`
+        })
         }
     }
 })

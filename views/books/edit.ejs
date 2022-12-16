@@ -1,0 +1,6 @@
+<h2>Edit Book</h2>
+<Form action="/books/<%= book.id %>?_method=PUT" method="POST" enctype="multipart/form-data"> <!--tells the server that our form is using multipartdata(like files)--> 
+<%- include('formFields') %>
+<a href="/books">Cancel</a>
+<button type="submit" class="btn btn-primary">Update</button>
+</Form>

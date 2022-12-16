@@ -1,0 +1,47 @@
+:root {
+    font-family:'Gill Sans';
+    font-size: 20px;
+}
+
+body {
+    background-image: linear-gradient(to right, SeaShell, CornFlowerBlue);
+    margin-left: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 3rem;
+}
+  
+.inner-container {
+    margin: 0 2rem;
+}
+
+.spacing {
+    margin-left: 8px;
+}
+
+.authors {
+    display: inline;
+    text-align: center;
+    float: left;
+    margin-right: 35px;
+    margin-bottom: 10px;
+    border: 2px solid cornflowerblue;
+    border-radius: 25px;
+    padding: 10px;
+    width: 200px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.938);
+}
+
+.books {
+    display: inline;
+    margin-right: 35px;
+    margin-bottom: 10px;
+}
+
+.error {
+    color: red;
+}
