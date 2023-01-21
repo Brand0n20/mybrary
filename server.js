@@ -21,7 +21,10 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 app.use(methodOverride('_method'));
 
 const mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASE_URL, {
+
+// you want to connect to a server that's on the web somewhere
+// you need to download a library called 'dotenv' that will load enviroment variables into our application
+mongoose.connect(process.env.DATABASE_URL, {    
     useNewUrlParser: true })
 const db = mongoose.connection;
 db.on('error', error => console.error(error))
